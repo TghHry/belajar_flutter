@@ -11,7 +11,7 @@ class Tugas1Flutter extends StatelessWidget {
         title: const Text("Profile Saya"),
         centerTitle: true,
       ),
-      body: Padding(
+      body: Padding(                                  //Nama lenkap
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -26,7 +26,7 @@ class Tugas1Flutter extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 10),
-            Row(
+            Row(                                    //alamat
               mainAxisAlignment: MainAxisAlignment.start,
               children: const [
                 Icon(Icons.location_on, color: Colors.red),
