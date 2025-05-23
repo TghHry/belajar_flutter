@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class MeetDua extends StatelessWidget {
-  const MeetDua({super.key});
+class TugasDua extends StatelessWidget {
+  const TugasDua({super.key});
 
   @override
   Widget build(BuildContext context) {
