@@ -57,7 +57,7 @@ class TugasTiga extends StatelessWidget {
                             borderRadius: BorderRadius.circular(16),
                           ),
                           focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(16),
+                            borderRadius: BorderRadius.circular(20),
                             borderSide: BorderSide(
                               color: Color(0xffB6B09F),
                               width: 3,
@@ -130,6 +130,7 @@ class TugasTiga extends StatelessWidget {
                         bottom: 15,
                       ),
                       child: TextField(
+                        maxLength: 50,
                         keyboardType: TextInputType.multiline,
                         decoration: InputDecoration(
                           labelText: 'Deskripsi',

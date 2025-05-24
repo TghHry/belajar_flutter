@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class MeetLimaB extends StatefulWidget {
-  const MeetLimaB({super.key});
+class TugasLima extends StatefulWidget {
+  const TugasLima({super.key});
 
   @override
-  State<MeetLimaB> createState() => _MeetLimaBState();
+  State<TugasLima> createState() => _TugasLimaState();
 }
 
-class _MeetLimaBState extends State<MeetLimaB> {
+class _TugasLimaState extends State<TugasLima> {
   bool showName = false;
   bool isFavorite = false;
   bool showMore = false;
@@ -118,7 +118,7 @@ class _MeetLimaBState extends State<MeetLimaB> {
                   padding: EdgeInsets.all(8),
                   child: Text(
                     showBoxText ? "Gambar Disentuh" : "klik gambar ini",
-                    style: TextStyle(fontSize: 15, color: Colors.blue),
+                    style: TextStyle(fontSize: 15, color: const Color.fromARGB(255, 122, 139, 153)),
                   ),
                 ),
               ),

@@ -1,5 +1,10 @@
+// import 'package:belajar_flutter2/meet_5/meet_5b.dart';
+// import 'package:belajar_flutter2/meet_5/meet_5c.dart';
+// import 'package:belajar_flutter2/meet_5/tugas_5_flutter.dart';
+import 'package:belajar_flutter2/meet_6/login_page.dart';
+import 'package:belajar_flutter2/meet_6/tugas_6_flutter.dart';
+// import 'package:belajar_flutter2/meet_6/tugas_6_flutter.dart';
 
-import 'package:belajar_flutter2/meet_4/tugas_4_flutter.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,14 +18,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      // home:TugasSatu(),
-      // home:TugasTiga()
-      // home: Meet3a()
-      home: TugasEmpat(),
+      // home: TugasEmpat(),
+      // home: TugasTigaContoh(),
+      // home: MeetLima(),
+       home: TugasEnam(),
+    //  home: ModernLoginPage(),
+      //home: Tugas5Flutter(),
+      // home: TugasTiga(),
+      //home: TugasEmpat(),
     );
   }
 }
@@ -39,25 +49,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void _incrementCounter() {
     setState(() {
-    
       _counter++;
     });
   }
 
   @override
   Widget build(BuildContext context) {
-   
     return Scaffold(
       appBar: AppBar(
-        
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-      
+
         title: Text(widget.title),
       ),
       body: Center(
-     
         child: Column(
-  
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             const Text('You have pushed the button this many times:'),

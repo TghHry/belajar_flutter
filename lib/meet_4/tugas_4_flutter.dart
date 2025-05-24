@@ -8,7 +8,9 @@ class TugasEmpat extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Formulir & Produk"),
+        leading: Icon(Icons.search),
         centerTitle: true,
+
         backgroundColor: Colors.blue,
       ),
       body: ListView(
@@ -52,6 +54,7 @@ class TugasEmpat extends StatelessWidget {
               border: OutlineInputBorder(),
             ),
             maxLines: 3,
+            maxLength: 50,
           ),
           const SizedBox(height: 24),
           const Divider(),
