@@ -30,7 +30,7 @@ class _TugasEnamState extends State<TugasEnam> {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.symmetric(horizontal: 24),
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 30),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -108,11 +108,12 @@ class _TugasEnamState extends State<TugasEnam> {
 
               // Login Button
               SizedBox(
-                width: double.infinity,
-                height: 50,
+                width: 300,
+                height: 40,
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
+                    minimumSize: Size(double.infinity, 60),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30),
                     ),
@@ -185,10 +186,7 @@ class _TugasEnamState extends State<TugasEnam> {
                       borderRadius: BorderRadius.circular(30),
                     ),
                   ),
-                  icon: Image.asset(
-                    "assets/images/google3.png",
-                    height: 14,
-                  ),
+                  icon: Image.asset("assets/images/google3.png", height: 14),
                   onPressed: () {},
                   label: Text(
                     "Gmail",
