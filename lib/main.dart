@@ -1,9 +1,5 @@
-import 'package:belajar_flutter2/Meet_11/login_screen.dart';
-import 'package:belajar_flutter2/meet_12/meet_12a.dart';
-// import 'package:belajar_flutter2/meet_2/contoh_contoh2.dart';
-import 'package:belajar_flutter2/meet_2/tugas_2_flutter.dart';
-import 'package:belajar_flutter2/meet_3/meet_3a.dart';
-import 'package:belajar_flutter2/meet_7/tugas_7_flutter.dart';
+import 'package:belajar_flutter2/meet_8/tugas_8_flutter.dart';
+// import 'package:belajar_flutter2/meet_ali_7/tugas8.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -29,12 +25,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         // useMaterial3: true,
         fontFamily: 'Poppins',
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.green),
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         pageTransitionsTheme: PageTransitionsTheme(
           builders: {TargetPlatform.android: CupertinoPageTransitionsBuilder()},
         ),
       ),
-      home:TugasTujuh() ,
+      home: TugasDelapan(),
     );
   }
 }
