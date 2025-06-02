@@ -1,4 +1,6 @@
-import 'package:belajar_flutter2/meet_8/tugas_8_flutter.dart';
+// import 'package:belajar_flutter2/meet_14/meet_14a.dart';
+import 'package:belajar_flutter2/meet_14_tugas/my_home_page_tugas.dart';
+// import 'package:belajar_flutter2/meet_8/tugas_8_flutter.dart';
 // import 'package:belajar_flutter2/meet_ali_7/tugas8.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +32,7 @@ class MyApp extends StatelessWidget {
           builders: {TargetPlatform.android: CupertinoPageTransitionsBuilder()},
         ),
       ),
-      home: TugasDelapan(),
+      home: TugasEmpatBelas(),
     );
   }
 }
