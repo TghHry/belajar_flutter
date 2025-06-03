@@ -1,4 +1,5 @@
-import 'package:belajar_flutter2/meet_4/tugas_4_flutter.dart';
+// import 'package:belajar_flutter2/meet_4/tugas_4_flutter.dart';
+import 'package:belajar_flutter2/tugas_10/tugas_10_main.dart';
 import 'package:flutter/material.dart';
 import 'package:belajar_flutter2/constant/app_color.dart';
 import 'package:belajar_flutter2/Meet_11/meet_11.dart';
@@ -33,7 +34,6 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               height(12),
               Text(
-
                 "Login to access your account",
                 style: TextStyle(fontSize: 14, color: AppColor.gray88),
               ),
@@ -75,7 +75,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 56,
                 child: ElevatedButton(
                   onPressed: () {
-
                     // Navigate to MeetLima screen menggunakan Push
                     Navigator.push(
                       context,
@@ -118,14 +117,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   Expanded(
                     child: Container(
                       margin: EdgeInsets.only(left: 8),
-
                       height: 1,
                       color: Colors.white,
                     ),
                   ),
                 ],
               ),
-
               height(16),
               SizedBox(
                 height: 48,
@@ -133,7 +130,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
                   ),
-
                   onPressed: () {
                     // Navigate to MeetLima screen menggunakan pushnamed
                     Navigator.pushNamed(context, "/meet_2");
@@ -162,16 +158,16 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   TextButton(
                     onPressed: () {
-                      Navigator.pushReplacement(
+                      Navigator.pushAndRemoveUntil(
                         context,
-                        MaterialPageRoute(builder: (context) => TugasEmpat()),
+                        MaterialPageRoute(builder: (context) => TugasSepuluh()),
+                        (route) => false,
                       );
                     },
                     child: Text(
                       "Sign Up",
                       style: TextStyle(
                         color: AppColor.blueButton,
-
                         fontSize: 12,
                         fontWeight: FontWeight.bold,
                       ),
@@ -222,20 +218,19 @@ class _LoginScreenState extends State<LoginScreen> {
             width: 1.0,
           ),
         ),
-        suffixIcon:
-            isPassword
-                ? IconButton(
-                  onPressed: () {
-                    setState(() {
-                      isVisibility = !isVisibility;
-                    });
-                  },
-                  icon: Icon(
-                    isVisibility ? Icons.visibility_off : Icons.visibility,
-                    color: AppColor.gray88,
-                  ),
-                )
-                : null,
+        suffixIcon: isPassword
+            ? IconButton(
+                onPressed: () {
+                  setState(() {
+                    isVisibility = !isVisibility;
+                  });
+                },
+                icon: Icon(
+                  isVisibility ? Icons.visibility_off : Icons.visibility,
+                  color: AppColor.gray88,
+                ),
+              )
+            : null,
       ),
     );
   }
