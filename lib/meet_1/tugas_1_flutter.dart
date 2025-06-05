@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// halaman profil
+
 class TugasSatu extends StatelessWidget {
   const TugasSatu({super.key});
 
@@ -11,7 +13,7 @@ class TugasSatu extends StatelessWidget {
         title: const Text("Profile Saya"),
         centerTitle: true,
       ),
-      body: Padding(                                  //Nama lenkap
+      body: Padding(                                  //Nama lengkap
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,

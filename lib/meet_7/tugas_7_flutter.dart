@@ -1,7 +1,14 @@
+import 'package:belajar_flutter2/meet_2/tugas_2_flutter.dart';
+import 'package:belajar_flutter2/meet_6/tugas_6_flutter.dart';
+import 'package:belajar_flutter2/meet_8/tugas_8_flutter.dart';
+import 'package:belajar_flutter2/tugas_10/tugas_10_main.dart';
+import 'package:belajar_flutter2/tugas_11/tugas_11.dart';
+import 'package:belajar_flutter2/utils/splash_screen.dart';
 import 'package:flutter/material.dart';
 
 class TugasTujuh extends StatefulWidget {
   const TugasTujuh({super.key});
+  static const String id = "/TugasTujuh";
 
   @override
   State<TugasTujuh> createState() => _TugasTujuhState();
@@ -45,14 +52,22 @@ class _TugasTujuhState extends State<TugasTujuh> {
           backgroundColor: Colors.white70,
           child: ListView(
             children: [
-              const DrawerHeader(
+              DrawerHeader(
                 decoration: BoxDecoration(color: Colors.white24),
                 child: Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    CircleAvatar(
-                      radius: 34,
-                      backgroundImage: AssetImage("assets/images/luffy.jpg"),
+                    InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => TugasDua()));
+                      },
+                      child: CircleAvatar(
+                        radius: 34,
+                        backgroundImage: AssetImage("assets/images/luffy.jpg"),
+                      ),
                     ),
                     SizedBox(width: 15),
                     Column(
@@ -117,14 +132,61 @@ class _TugasTujuhState extends State<TugasTujuh> {
                   Navigator.pop(context);
                 },
               ),
+              ListTile(
+                leading: Title(color: Colors.black, child: Icon(Icons.logout)),
+                title: Text("Log-out"),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SplashScreen(),
+                      ));
+                },
+              ),
+              ListTile(
+                leading: Title(
+                    color: Colors.black, child: Icon(Icons.login_outlined)),
+                title: Text("Tugas Enam (Login)"),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TugasEnam(),
+                      ));
+                },
+              ),
+              ListTile(
+                leading:
+                    Title(color: Colors.black, child: Icon(Icons.home_work)),
+                title: Text("Tugas Sepuluh"),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TugasSepuluh(),
+                      ));
+                },
+              ),
+              ListTile(
+                leading:
+                    Title(color: Colors.black, child: Icon(Icons.home_work)),
+                title: Text("Tugas Sebelas"),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => TugasSebelas(),
+                      ));
+                },
+              ),
             ],
           ),
         ),
         body: Stack(
           children: [
             SizedBox.expand(
-              child: Image.asset("assets/images/black.jpg", fit: BoxFit.cover),
-            ),
+                // child: Image.asset("assets/images/black.jpg", fit: BoxFit.cover),
+                ),
             SafeArea(
               child: Padding(
                 padding: EdgeInsets.all(16),
@@ -189,10 +251,9 @@ class _TugasTujuhState extends State<TugasTujuh> {
             DropdownButton<String>(
               value: _selectedCategory,
               hint: const Text("Pilih Kategori"),
-              items:
-                  ["Elektronik", "Pakaian", "Makanan", "Lainnya"]
-                      .map((e) => DropdownMenuItem(value: e, child: Text(e)))
-                      .toList(),
+              items: ["Elektronik", "Pakaian", "Makanan", "Lainnya"]
+                  .map((e) => DropdownMenuItem(value: e, child: Text(e)))
+                  .toList(),
               onChanged: (val) => setState(() => _selectedCategory = val),
             ),
             if (_selectedCategory != null)

@@ -1,17 +1,19 @@
+import 'package:belajar_flutter2/meet_16/database/db_helper.dart';
+import 'package:belajar_flutter2/meet_16/database/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TugasEnam extends StatefulWidget {
-  const TugasEnam({super.key});
-  static const String id = "/meet_tugasEnam";
+class LoginScreenApp extends StatefulWidget {
+  const LoginScreenApp({super.key});
+  static const String id = "/login_screen_app";
 
   @override
-  State<TugasEnam> createState() => _TugasEnamState();
+  State<LoginScreenApp> createState() => _LoginScreenAppState();
 }
 
-class _TugasEnamState extends State<TugasEnam> {
+class _LoginScreenAppState extends State<LoginScreenApp> {
   bool _obscureTextA = true;
-  final TextEditingController usernamecontroller = TextEditingController();
+  final TextEditingController emailcontroller = TextEditingController();
   final TextEditingController passwordcontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,7 @@ class _TugasEnamState extends State<TugasEnam> {
         leading: IconButton(
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
           onPressed: () {
-            Navigator.pop(context); // Kembali ke halaman sebelumnya
+            // Navigator.pop(context); // Kembali ke halaman sebelumnya
           },
         ),
         title: Text("Login", style: GoogleFonts.roboto(color: Colors.white)),
@@ -59,10 +61,10 @@ class _TugasEnamState extends State<TugasEnam> {
               // Email Field
               TextField(
                 style: GoogleFonts.roboto(color: Colors.white),
-                controller: usernamecontroller,
+                controller: emailcontroller,
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
-                  hintText: "Teguh Hariyanto",
+                  hintText: "Enter your Email",
                   hintStyle: GoogleFonts.roboto(color: Colors.white70),
                   prefixIcon: Icon(Icons.email, color: Colors.white70),
                   enabledBorder: UnderlineInputBorder(
@@ -119,9 +121,21 @@ class _TugasEnamState extends State<TugasEnam> {
                       borderRadius: BorderRadius.circular(30),
                     ),
                   ),
-                  onPressed: () {
-                    print("username : ${usernamecontroller.text}");
-                    print("password : ${passwordcontroller.text}");
+                  onPressed: () async {
+                    try {
+                      final userData = await DbHelper.login(
+                          emailcontroller.text, passwordcontroller.text);
+                      // Kalau berhasil
+                      print('data ada ${userData.toJson()}');
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("Login successfull")),
+                      );
+                    } catch (e) {
+                      // kalau login gagal
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("Email atau password salah")),
+                      );
+                    }
                     // TODO: Handle login
                   },
                   child: Text(
@@ -207,7 +221,7 @@ class _TugasEnamState extends State<TugasEnam> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      // TODO : HAndle sign up
+                      Navigator.pushNamed(context, RegisterScreenApp.id);
                     },
                     child: Text(
                       "   Sign In",
