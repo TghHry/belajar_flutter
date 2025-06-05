@@ -13,7 +13,7 @@ class TugasSatu extends StatelessWidget {
         title: const Text("Profile Saya"),
         centerTitle: true,
       ),
-      body: Padding(                                  //Nama lengkap
+      body: Padding(        //Nama lengkap
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,

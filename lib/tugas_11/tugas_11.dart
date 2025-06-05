@@ -18,6 +18,70 @@ class _TugasSebelasState extends State<TugasSebelas> {
   final TextEditingController asalcontroller = TextEditingController();
   final _formkey = GlobalKey<FormState>();
 
+  Future<void> hapusData(int id) async {
+    await DbHelperPendaftaran().deletePeserta(id);
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Data berhasil dihapus')),
+    );
+    muatData();
+  }
+
+  Future<void> ubahData(Peserta peserta) async {
+    namacontroller.text = peserta.nama;
+    emailcontroller.text = peserta.email;
+    kelascontroller.text = peserta.kelas;
+    asalcontroller.text = peserta.asal;
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text("Ubah Data"),
+          content: Form(
+            key: _formkey,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextFormField(
+                    controller: namacontroller,
+                    decoration: InputDecoration(labelText: 'Nama')),
+                TextFormField(
+                    controller: emailcontroller,
+                    decoration: InputDecoration(labelText: 'Email')),
+                TextFormField(
+                    controller: kelascontroller,
+                    decoration: InputDecoration(labelText: 'Kelas')),
+                TextFormField(
+                    controller: asalcontroller,
+                    decoration: InputDecoration(labelText: 'Asal')),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () async {
+                final updatedPeserta = Peserta(
+                  id: peserta.id,
+                  nama: namacontroller.text,
+                  email: emailcontroller.text,
+                  kelas: kelascontroller.text,
+                  asal: asalcontroller.text,
+                );
+                await DbHelperPendaftaran().updatePeserta(updatedPeserta);
+                Navigator.pop(context);
+                muatData();
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Data berhasil diupdate')),
+                );
+              },
+              child: Text("Simpan"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   List<Peserta> daftarPeserta = [];
 
   @override
@@ -148,6 +212,18 @@ class _TugasSebelasState extends State<TugasSebelas> {
                         title: Text(siswa.nama),
                         subtitle: Text(
                             'email: ${siswa.email}\nNama Kelas: ${siswa.kelas}\nAsal Kota : ${siswa.asal}'),
+                        trailing: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            IconButton(
+                                onPressed: () => ubahData(siswa),
+                                icon: Icon(Icons.edit, color: Colors.orange)),
+                            IconButton(
+                              icon: Icon(Icons.delete, color: Colors.red),
+                              onPressed: () => hapusData(siswa.id!),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   },

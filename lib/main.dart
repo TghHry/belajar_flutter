@@ -22,8 +22,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // initialRoute: SplashScreen.id,
-      initialRoute: TugasSebelas.id,
+      initialRoute: SplashScreen.id,
+      // initialRoute: TugasSebelas.id,
       routes: {
         //Harus didaftarkan dulu disini
         "/": (context) => SplashScreen(),

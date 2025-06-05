@@ -35,8 +35,7 @@ class TugasDua extends StatelessWidget {
                     child: const Center(
                       child: CircleAvatar(
                         radius: 40,
-                        backgroundImage:
-                            AssetImage("assets/images/luffy.jpg"),
+                        backgroundImage: AssetImage("assets/images/luffy.jpg"),
                       ),
                     ),
                   ),
@@ -72,7 +71,7 @@ class TugasDua extends StatelessWidget {
                       child: Row(
                         children: const [
                           Icon(Icons.email, color: Colors.blue),
-                          SizedBox(width: 8),
+                          SizedBox(width: 30),
                           Expanded(
                             child: Text(
                               "hariyantoteguh193@gmail.com",
@@ -181,7 +180,7 @@ class TugasDua extends StatelessWidget {
           ),
           // Hiasan visual bawah
           Container(
-            height: 30,
+            height: 20,
             width: double.infinity,
             decoration: const BoxDecoration(
               gradient: LinearGradient(

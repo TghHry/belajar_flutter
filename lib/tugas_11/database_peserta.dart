@@ -19,7 +19,7 @@ class DbHelperPendaftaran {
   Future<void> insertPendaftaran(Peserta peserta) async {
     final db = await DbHelperPendaftaran.db(); // perbaikan pemanggilan fungsi
     await db.insert('peserta', peserta.toMap(),
-        conflictAlgorithm: ConflictAlgorithm.replace);
+    conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
   Future<List<Peserta>> getAllPeserta() async {
@@ -30,4 +30,25 @@ class DbHelperPendaftaran {
       (i) => Peserta.fromMap(maps[i]),
     );
   }
+
+  Future<void> updatePeserta(Peserta peserta) async {
+  final db = await DbHelperPendaftaran.db();
+  await db.update(
+    'peserta',
+    peserta.toMap(),
+    where: 'id = ?',
+    whereArgs: [peserta.id],
+  );
+}
+
+Future<void> deletePeserta(int id) async {
+  final db = await DbHelperPendaftaran.db();
+  await db.delete(
+    'peserta',
+    where: 'id = ?',
+    whereArgs: [id],
+  );
+}
+
+
 }
