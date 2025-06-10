@@ -2,7 +2,7 @@ import 'package:belajar_flutter2/meet_2/tugas_2_flutter.dart';
 import 'package:belajar_flutter2/meet_6/tugas_6_flutter.dart';
 import 'package:belajar_flutter2/meet_8/tugas_8_flutter.dart';
 import 'package:belajar_flutter2/tugas_10/tugas_10_main.dart';
-import 'package:belajar_flutter2/tugas_11/tugas_11.dart';
+import 'package:belajar_flutter2/tugas_11_12/tugas_11.dart';
 import 'package:belajar_flutter2/utils/splash_screen.dart';
 import 'package:flutter/material.dart';
 

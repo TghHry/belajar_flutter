@@ -1,5 +1,5 @@
-import 'package:belajar_flutter2/tugas_11/database_peserta.dart';
-import 'package:belajar_flutter2/tugas_11/model_peserta.dart';
+import 'package:belajar_flutter2/tugas_11_12/database_peserta.dart';
+import 'package:belajar_flutter2/tugas_11_12/model_peserta.dart';
 // import 'package:belajar_flutter2/meet_7/tugas_7_flutter.dart';
 import 'package:flutter/material.dart';
 

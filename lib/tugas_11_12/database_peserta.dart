@@ -1,4 +1,4 @@
-import 'package:belajar_flutter2/tugas_11/model_peserta.dart';
+import 'package:belajar_flutter2/tugas_11_12/model_peserta.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
