@@ -1,6 +1,8 @@
 // import 'package:belajar_flutter2/study_case_meet_16/siswa_screen.dart';
-import 'package:belajar_flutter2/meet_7/tugas_7_flutter.dart';
+// import 'package:belajar_flutter2/meet_7/tugas_7_flutter.dart';
+// import 'package:belajar_flutter2/meet_8/tugas_8_flutter.dart';
 import 'package:belajar_flutter2/meet_8/tugas_8_flutter.dart';
+import 'package:belajar_flutter2/tugas_11_12/tugas_11.dart';
 import 'package:flutter/material.dart';
 import 'package:belajar_flutter2/constant/app_image.dart';
 import 'package:belajar_flutter2/constant/app_style.dart';
@@ -29,16 +31,16 @@ class _SplashScreenState extends State<SplashScreen> {
       // } else {
       //   Navigator.pushNamedAndRemoveUntil(context, "/login", (route) => false);
       // }
-      Navigator.pushNamedAndRemoveUntil(
-        context,
-        TugasDelapan.id,
-        (route) => false,
-      );
-      //  Navigator.pushNamedAndRemoveUntil(
+      // Navigator.pushNamedAndRemoveUntil(
       //   context,
-      //   TugasSebelas.id,
+      //   TugasDelapan.id,
       //   (route) => false,
       // );
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => TugasDelapan(),
+          ));
     });
   }
 

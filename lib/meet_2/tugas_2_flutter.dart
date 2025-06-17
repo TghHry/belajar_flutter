@@ -116,14 +116,30 @@ class TugasDua extends StatelessWidget {
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.all(16),
-                    child: Text(
-                      "Saya seorang pembelajar flutter pemula yang ingin membuat aplikasi "
-                      "bermanfaat di era digital, baik untuk diri sendiri maupun masyarakat. "
-                      "Fokus saya adalah membangun aplikasi islami dan edukatif.",
-                      style: TextStyle(fontSize: 18, color: Colors.black),
-                      textAlign: TextAlign.left,
+                  SizedBox(height: 10),
+                  Container(
+                    padding: const EdgeInsets.all(12),
+                    decoration: BoxDecoration(
+                      color: Colors.grey[100],
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.shade400,
+                          spreadRadius: 2,
+                          blurRadius: 5,
+                          offset: const Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                    child: const Padding(
+                      padding: EdgeInsets.all(16),
+                      child: Text(
+                        "Saya seorang pembelajar flutter pemula yang ingin membuat aplikasi "
+                        "bermanfaat di era digital, baik untuk diri sendiri maupun masyarakat. "
+                        "Fokus saya adalah membangun aplikasi islami dan edukatif.",
+                        style: TextStyle(fontSize: 18, color: Colors.black),
+                        textAlign: TextAlign.left,
+                      ),
                     ),
                   ),
                   // Postingan dan Followers

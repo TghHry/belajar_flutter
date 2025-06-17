@@ -1,5 +1,20 @@
 import 'package:flutter/material.dart';
 
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: TugasLima(),
+    );
+  }
+}
+
 class TugasLima extends StatefulWidget {
   const TugasLima({super.key});
 
@@ -13,8 +28,8 @@ class _TugasLimaState extends State<TugasLima> {
   bool showMore = false;
   int counter = 0;
   bool showBoxText = false;
-
   bool tampilLoading = false;
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -118,7 +133,9 @@ class _TugasLimaState extends State<TugasLima> {
                   padding: EdgeInsets.all(8),
                   child: Text(
                     showBoxText ? "Gambar Disentuh" : "klik gambar ini",
-                    style: TextStyle(fontSize: 15, color: const Color.fromARGB(255, 122, 139, 153)),
+                    style: TextStyle(
+                        fontSize: 15,
+                        color: const Color.fromARGB(255, 122, 139, 153)),
                   ),
                 ),
               ),

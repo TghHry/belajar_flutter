@@ -6,7 +6,7 @@ import 'package:belajar_flutter2/meet_2/tugas_2_flutter.dart';
 import 'package:belajar_flutter2/meet_3/meet_3a.dart';
 import 'package:belajar_flutter2/meet_7/tugas_7_flutter.dart';
 import 'package:belajar_flutter2/meet_8/tugas_8_flutter.dart';
-import 'package:belajar_flutter2/study_case_meet_16/siswa_screen.dart';
+// import 'package:belajar_flutter2/study_case_meet_16/siswa_screen.dart';
 import 'package:belajar_flutter2/tugas_11_12/tugas_11.dart';
 import 'package:belajar_flutter2/utils/splash_screen.dart';
 import 'package:flutter/material.dart';

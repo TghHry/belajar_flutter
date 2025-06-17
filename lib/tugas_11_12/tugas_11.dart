@@ -1,6 +1,5 @@
 import 'package:belajar_flutter2/tugas_11_12/database_peserta.dart';
 import 'package:belajar_flutter2/tugas_11_12/model_peserta.dart';
-// import 'package:belajar_flutter2/meet_7/tugas_7_flutter.dart';
 import 'package:flutter/material.dart';
 
 class TugasSebelas extends StatefulWidget {
@@ -130,12 +129,6 @@ class _TugasSebelasState extends State<TugasSebelas> {
           'Pendaftaran Peserta Kelas',
           style: TextStyle(color: Colors.white),
         ),
-        // leading: IconButton(
-        //     onPressed: () {
-        //       Navigator.pushNamed(context, TugasTujuh.id);
-        //     },
-        //     icon: Icon(Icons.arrow_back_ios_new_outlined)),
-        // centerTitle: true,
       ),
       body: Card(
         color: Color(0xffDFD3C3),
