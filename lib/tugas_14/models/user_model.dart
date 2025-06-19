@@ -1,11 +1,14 @@
+// To parse this JSON data, do
+//
+//     final film = filmFromJson(jsonString);
 
 import 'dart:convert';
 
-List<Welcome> welcomeFromJson(String str) => List<Welcome>.from(json.decode(str).map((x) => Welcome.fromJson(x)));
+List<Film> filmFromJson(String str) => List<Film>.from(json.decode(str).map((x) => Film.fromJson(x)));
 
-String welcomeToJson(List<Welcome> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
+String filmToJson(List<Film> data) => json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class Welcome {
+class Film {
     String? id;
     String? title;
     String? originalTitle;
@@ -24,7 +27,7 @@ class Welcome {
     List<String>? vehicles;
     String? url;
 
-    Welcome({
+    Film({
         this.id,
         this.title,
         this.originalTitle,
@@ -44,7 +47,7 @@ class Welcome {
         this.url,
     });
 
-    factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
+    factory Film.fromJson(Map<String, dynamic> json) => Film(
         id: json["id"],
         title: json["title"],
         originalTitle: json["original_title"],

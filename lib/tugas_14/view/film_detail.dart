@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:belajar_flutter2/tugas_14/models/user_model.dart'; // Ganti dengan path yang benar
 
-
-
-
 class FilmDetailScreen extends StatelessWidget {
-  final Welcome film;
+  final Film film;
 
   const FilmDetailScreen({Key? key, required this.film}) : super(key: key);
 
@@ -39,12 +36,14 @@ class FilmDetailScreen extends StatelessWidget {
                     fit: BoxFit.cover,
                     height: 250,
                     width: double.infinity,
-                    loadingBuilder: (BuildContext context, Widget child, ImageChunkEvent? loadingProgress) {
+                    loadingBuilder: (BuildContext context, Widget child,
+                        ImageChunkEvent? loadingProgress) {
                       if (loadingProgress == null) return child;
                       return Center(
                         child: CircularProgressIndicator(
                           value: loadingProgress.expectedTotalBytes != null
-                              ? loadingProgress.cumulativeBytesLoaded / (loadingProgress.expectedTotalBytes ?? 1)
+                              ? loadingProgress.cumulativeBytesLoaded /
+                                  (loadingProgress.expectedTotalBytes ?? 1)
                               : null,
                         ),
                       );
@@ -90,34 +89,6 @@ class FilmDetailScreen extends StatelessWidget {
                 textAlign: TextAlign.justify,
               ),
               const SizedBox(height: 16),
-              // Menampilkan informasi tambahan
-              if (film.species != null && film.species!.isNotEmpty) ...[
-                Text(
-                  'Species: ${film.species!.join(', ')}',
-                  style: const TextStyle(fontSize: 16),
-                ),
-                const SizedBox(height: 8),
-              ],
-              if (film.locations != null && film.locations!.isNotEmpty) ...[
-                Text(
-                  'Locations: ${film.locations!.join(', ')}',
-                  style: const TextStyle(fontSize: 16),
-                ),
-                const SizedBox(height: 8),
-              ],
-              if (film.vehicles != null && film.vehicles!.isNotEmpty) ...[
-                Text(
-                  'Vehicles: ${film.vehicles!.join(', ')}',
-                  style: const TextStyle(fontSize: 16),
-                ),
-                const SizedBox(height: 8),
-              ],
-              if (film.people != null && film.people!.isNotEmpty) ...[
-                Text(
-                  'People: ${film.people!.join(', ')}',
-                  style: const TextStyle(fontSize: 16),
-                ),
-              ],
             ],
           ),
         ),

@@ -18,9 +18,16 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class UserListScreen extends StatelessWidget {
-  const UserListScreen({Key? key}) : super(key: key); // Perbaiki constructor
+class UserListScreen extends StatefulWidget {
+  const UserListScreen({Key? key}) : super(key: key); 
+  @override
+  State<UserListScreen> createState() => _UserListScreenState();
+}
 
+
+
+class _UserListScreenState extends State<UserListScreen> {
+ // Perbaiki constructor
   @override
   Widget build(BuildContext context) {
     return Scaffold(
