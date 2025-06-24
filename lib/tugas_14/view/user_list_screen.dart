@@ -3,21 +3,21 @@ import 'package:flutter/material.dart';
 import 'package:belajar_flutter2/tugas_14/api/get_user.dart'; // Ganti dengan path yang benar
 import 'package:belajar_flutter2/tugas_14/models/user_model.dart'; // Ganti dengan path yang benar
 
-// void main() {
-//   runApp(MyApp());
-// }
+void main() {
+  runApp(MyApp());
+}
 
-// class MyApp extends StatelessWidget {
-//   const MyApp({super.key});
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       debugShowCheckedModeBanner: false,
-//       home: FilmListScreen(),
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: FilmListScreen(),
+    );
+  }
+}
 
 class FilmListScreen extends StatefulWidget {
   const FilmListScreen({Key? key}) : super(key: key);
@@ -31,8 +31,6 @@ class _FilmListScreenState extends State<FilmListScreen> {
   List<Film> _filteredFilms = [];
   bool _isLoading = true;
   String _searchQuery = '';
-
-
 
   @override
   void initState() {
@@ -88,8 +86,19 @@ class _FilmListScreenState extends State<FilmListScreen> {
                         _filterFilms, // Memanggil fungsi filter saat input berubah
                     decoration: InputDecoration(
                       labelText: 'Search',
+                      labelStyle: TextStyle(color: Colors.teal),
                       border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(8.0),
+                          borderSide: BorderSide(color: Colors.teal)),
+                      focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(8.0),
+                        borderSide: BorderSide(
+                            color: Colors.teal), // Warna border saat fokus
+                      ),
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8.0),
+                        borderSide: BorderSide(
+                            color: Colors.teal), // Warna border saat diaktifkan
                       ),
                       prefixIcon: const Icon(Icons.search),
                     ),
@@ -138,6 +147,10 @@ class _FilmListScreenState extends State<FilmListScreen> {
                                   ),
                                   Text(
                                     'Release Date: ${film.releaseDate ?? 'Unknown'}',
+                                    style: const TextStyle(fontSize: 16),
+                                  ),
+                                  Text(
+                                    'Rating: ${film.rtScore ?? 'Unknown'}',
                                     style: const TextStyle(fontSize: 16),
                                   ),
                                   const SizedBox(height: 12),

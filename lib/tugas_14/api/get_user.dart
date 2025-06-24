@@ -14,6 +14,7 @@ Future<List<Film>> fetchFilms() async {
     throw Exception(
         'Failed to load films. Status code: ${response.statusCode}');
   }
+  
 }
 
 

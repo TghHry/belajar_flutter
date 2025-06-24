@@ -63,6 +63,13 @@ class FilmDetailScreen extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              const SizedBox(height: 16),
+              Text(
+                film.originalTitle ?? 'No Description',
+                style: const TextStyle(fontSize: 16),
+                textAlign: TextAlign.justify,
+              ),
+              const SizedBox(height: 16),
               const SizedBox(height: 8),
               // Menampilkan informasi film
               Text(
