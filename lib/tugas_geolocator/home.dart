@@ -9,7 +9,7 @@ class TugasGeolocator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Google Map + Geolocator + Geocoding',
+      title: 'Google Map + Geolocator + Geocoding', // Judul aplikasi
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -26,29 +26,30 @@ class MapScreen extends StatefulWidget {
 }
 
 class _MapScreenState extends State<MapScreen> {
-  // Initial Data
+  // Data Awal
   GoogleMapController? mapController;
   LatLng _currentPosition =
-      const LatLng(-6.200000, 106.816666); // Default: Jakarta
+      const LatLng(-6.210800, 106.812940); // Default: Jakarta
   String _currentAddress = 'Alamat tidak ditemukan';
-  Marker? _marker;
+  Marker? _marker; // Marker untuk lokasi saat ini
 
   @override
   void initState() {
     super.initState();
-    _getCurrentLocation();
+    _getCurrentLocation(); // Dapatkan lokasi saat ini ketika widget diinisialisasi
   }
 
+  // Fungsi untuk mendapatkan lokasi saat ini
   Future<void> _getCurrentLocation() async {
     bool serviceEnabled;
     LocationPermission permission;
 
-    // Test if location services are enabled.
+    // Periksa apakah layanan lokasi diaktifkan.
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      // Location services are not enabled don't continue
-      // accessing the position and request users of the
-      // App to enable the location services.
+      // Layanan lokasi tidak diaktifkan, jangan lanjutkan
+      // akses posisi dan minta pengguna Aplikasi untuk
+      // mengaktifkan layanan lokasi.
       await Geolocator.openLocationSettings();
       return;
     }
@@ -57,54 +58,61 @@ class _MapScreenState extends State<MapScreen> {
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        // Permissions are denied, next time you could try
-        // requesting permissions again (this is also where
+        // Izin ditolak, lain kali Anda dapat mencoba
+        // meminta izin lagi (ini juga tempat
         // Android's shouldShowRequestPermissionRationale
-        // returned true. According to Android guidelines
-        // your App should show an explanatory UI now.
-        return Future.error('Location permissions are denied');
+        // mengembalikan true. Sesuai pedoman Android,
+        // Aplikasi Anda harus menampilkan UI penjelasan sekarang.
+        return Future.error('Izin lokasi ditolak');
       }
     }
 
     if (permission == LocationPermission.deniedForever) {
-      // Permissions are denied forever, handle appropriately.
+      // Izin ditolak secara permanen, tangani dengan tepat.
       return Future.error(
-          'Location permissions are permanently denied, we cannot request permissions.');
+          'Izin lokasi ditolak secara permanen, kami tidak dapat meminta izin.');
     }
 
-    // When we reach here, permissions are granted and we can
-    // continue accessing the position of the device.
+    // Ketika kita mencapai di sini, izin diberikan dan kita dapat
+    // melanjutkan mengakses posisi perangkat.
     Position position = await Geolocator.getCurrentPosition(
-      desiredAccuracy: LocationAccuracy.high,
+      desiredAccuracy: LocationAccuracy.high, // Akurasi tinggi
     );
 
+    // Perbarui posisi saat ini
     _currentPosition = LatLng(position.latitude, position.longitude);
 
+    // Dapatkan informasi alamat dari koordinat
     List<Placemark> placemarks = await placemarkFromCoordinates(
       _currentPosition.latitude,
       _currentPosition.longitude,
+      // localeIdentifier: "id_ID", // Spesifikasi locale untuk hasil yang lebih baik
     );
-    Placemark place = placemarks[0];
+    Placemark place = placemarks[0]; // Ambil placemark pertama
 
+    // Perbarui state dengan lokasi dan alamat baru
     setState(() {
       _marker = Marker(
-        markerId: const MarkerId('lokasi_saya'),
-        position: _currentPosition,
+        markerId: const MarkerId('lokasi_saya'), // ID unik untuk marker
+        position: _currentPosition, // Posisi marker
         infoWindow: InfoWindow(
-          title: 'Lokasi Anda',
-          snippet: '${place.street}, ${place.locality}',
+          title: 'Lokasi Anda', // Judul jendela info
+          snippet: '${place.street}, ${place.locality}', // Snippet info
         ),
-        icon: BitmapDescriptor.defaultMarker,
+        icon: BitmapDescriptor.defaultMarker, // Ikon marker default
       );
 
+      // Bentuk alamat lengkap
       _currentAddress =
-          '${place.name}, ${place.street}, ${place.locality}, ${place.country}';
+          '${place.name}, ${place.street}, ${place.subLocality}, ${place.locality}, ${place.subAdministrativeArea}, ${place.administrativeArea}, ${place.postalCode}, ${place.country}';
+      // Anda mungkin perlu menyesuaikan bagaimana alamat ditampilkan berdasarkan data yang Anda inginkan
+      // Contoh: 'Jl. ${place.thoroughfare}, ${place.subLocality}, ${place.locality}, ${place.administrativeArea}, ${place.postalCode}'
     });
 
-    // Animate camera to current location
+    // Animasikan kamera peta ke lokasi saat ini
     mapController?.animateCamera(
       CameraUpdate.newCameraPosition(
-        CameraPosition(target: _currentPosition, zoom: 16),
+        CameraPosition(target: _currentPosition, zoom: 16), // Zoom ke level 16
       ),
     );
   }
@@ -113,22 +121,23 @@ class _MapScreenState extends State<MapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Google Map + Geolocator + Geocoding'),
+        title:
+            const Text('Peta Google + Geolocator + Geocoding'), // Judul AppBar
       ),
       body: Stack(
         children: [
           GoogleMap(
             initialCameraPosition: CameraPosition(
               target: _currentPosition,
-              zoom: 14,
+              zoom: 14, // Zoom awal
             ),
             onMapCreated: (controller) {
-              mapController = controller;
+              mapController = controller; // Simpan controller peta
             },
             markers:
-                _marker != null ? {_marker!} : {}, // Menggunakan Set of Markers
-            myLocationEnabled: true,
-            myLocationButtonEnabled: true,
+                _marker != null ? {_marker!} : {}, // Tampilkan marker jika ada
+            myLocationEnabled: true, // Aktifkan penunjuk lokasi saya
+            myLocationButtonEnabled: true, // Aktifkan tombol lokasi saya
           ),
           Positioned(
             top: 16,
@@ -136,11 +145,11 @@ class _MapScreenState extends State<MapScreen> {
             right: 16,
             child: Card(
               color: Colors.white,
-              elevation: 4,
+              elevation: 4, // Elevasi kartu
               child: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: Text(
-                  _currentAddress,
+                  _currentAddress, // Tampilkan alamat saat ini
                   style: const TextStyle(fontSize: 14),
                 ),
               ),
@@ -149,9 +158,10 @@ class _MapScreenState extends State<MapScreen> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _getCurrentLocation,
-        child: const Icon(Icons.refresh),
-        tooltip: 'Refresh Lokasi',
+        onPressed:
+            _getCurrentLocation, // Panggil fungsi untuk mendapatkan lokasi saat ini
+        child: const Icon(Icons.refresh), // Ikon refresh
+        tooltip: 'Segarkan Lokasi', // Tooltip tombol
       ),
     );
   }
